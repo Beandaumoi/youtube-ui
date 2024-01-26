@@ -1,5 +1,4 @@
 //Để có thể có đặt class có "-"
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import {
     faArrowRightFromBracket,
@@ -11,30 +10,24 @@ import {
     faGear,
     faGlobe,
     faKeyboard,
-    faMagnifyingGlass,
-    faMicrophone,
     faMoon,
     faPersonBooth,
     faShieldHalved,
     faUserShield,
-    faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as ProperWrapper } from '~/components/Proper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import Menu from '~/components/Proper/Menu';
 import { faBitcoin, faGoogle, faSquareYoutube } from '@fortawesome/free-brands-svg-icons';
 import { NotificationsIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
-import UserHeader from '~/components/Proper/Menu/UserHeader';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -93,15 +86,6 @@ const MENU_ITEMS = [
 
 function Header() {
     const currentUser = true;
-
-    const [searchResults, setSearchResults] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([]);
-        }, 0);
-    }, []);
-
     const userMenu = [
         {
             icon: <FontAwesomeIcon icon={faGoogle} />,
@@ -142,50 +126,8 @@ function Header() {
                         alt="YouTube"
                     />
                 </div>
-                <div
-                    style={{
-                        display: 'flex',
-                    }}
-                >
-                    <div className={cx('search-icon')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </div>
-                    <HeadlessTippy
-                        interactive
-                        visible={searchResults.length > 0}
-                        render={(attrs) => (
-                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                <ProperWrapper>
-                                    <h4 className={cx('search-title')}>Kênh</h4>
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                </ProperWrapper>
-                            </div>
-                        )}
-                    >
-                        <div className={cx('search')}>
-                            <input placeholder="Tìm kiếm" spellCheck={false} />
-                            <button className={cx('keyboard')}>
-                                <FontAwesomeIcon icon={faKeyboard} />
-                            </button>
-                            <button className={cx('clear')}>
-                                <FontAwesomeIcon icon={faXmark} />
-                            </button>
-                        </div>
-                    </HeadlessTippy>
-                    <div>
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                        <button className={cx('micro-btn')}>
-                            <FontAwesomeIcon icon={faMicrophone} />
-                        </button>
-                    </div>
-                </div>
 
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
