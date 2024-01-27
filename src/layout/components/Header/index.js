@@ -17,8 +17,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
+import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 
+import config from '~/config';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/Button';
@@ -46,6 +48,110 @@ const MENU_ITEMS = [
         children: {
             title: 'Choose your language',
             data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
                 {
                     code: 'en',
                     title: 'English',
@@ -120,11 +226,13 @@ function Header() {
                     <button className={cx('menu-btn')}>
                         <FontAwesomeIcon icon={faBars} />
                     </button>
-                    <img
-                        style={{ height: '20px', marginTop: '6px', cursor: 'pointer' }}
-                        src={images.logo}
-                        alt="YouTube"
-                    />
+                    <Link to={config.routes.home} className={cx('logo-link')}>
+                        <img
+                            style={{ height: '20px', marginTop: '6px', cursor: 'pointer' }}
+                            src={images.logo}
+                            alt="YouTube"
+                        />
+                    </Link>
                 </div>
 
                 <Search />

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 
@@ -40,16 +41,16 @@ function Menu({ display, placement, children, items = [] }) {
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <ProperWrapper className={cx('menu-popper')}>
-                        <UserHeader display={display} />
+                        {history.length > 1 ? <UserHeader display={''} /> : <UserHeader display={display} />}
                         {history.length > 1 && (
                             <Header
-                                title={'Choose your language'}
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, history.length - 1));
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </ProperWrapper>
                 </div>
             )}
@@ -59,5 +60,12 @@ function Menu({ display, placement, children, items = [] }) {
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    display: PropTypes.node,
+    placement: PropTypes.node,
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+};
 
 export default Menu;
